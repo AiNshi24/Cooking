@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
- 
+
   #管理者用
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
@@ -25,6 +25,13 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :edit, :update]
     get 'users/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
     patch 'users/withdraw' => 'customers#withdraw', as: 'withdraw'
+    delete 'recipes/destroy_all'
+    resources :recipes do 
+      resources :comments, only: [:index, :create, :destroy]
+      resource :book_marks, only: [:index, :create, :destroy]
+  end
+    resources :ingredlents
+    resources :food_stocks, only: [:new, :create, :index, :destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
