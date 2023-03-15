@@ -6,6 +6,8 @@ class Recipe < ApplicationRecord
   has_many :tag_relationships, dependent: :destroy
   has_many :tags, through: :tag_relationships
   
+  has_one_attached :image
+  
   def favorited_by?(user)
     book_marks.exists?(user_id: user.id)
   end
