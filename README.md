@@ -17,7 +17,7 @@
 料理を作るとき、家にある食料を確認するとき。
 
 ## 設計書
-ER図 https://drive.google.com/file/d/1HpiHZJ17PZF4T0AAvZgFWFn3NWGn7ARj/view?usp=sharing
+ER図 https://drive.google.com/file/d/1UQF-HW9Dbv3NJA-mEKHt3aYlmyLRJ2ll/view?usp=sharing
 
 ## 開発環境
 - OS：Linux(CentOS)
