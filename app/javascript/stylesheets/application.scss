@@ -1,2 +1,29 @@
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 @import '~bootstrap/scss/bootstrap';
+@font-face {
+  font-family: 'Pomeranian-Regular.ttf';
+  src: url('../fonts/Pomeranian-Regular.ttf') format('opentype');
+}
+
+.navbar-brand{
+  color: #cc6666;
+}
+.navbar-brand:hover{
+  color: #ffb6c1;
+}
+.logo{
+  font-family: 'Pomeranian-Regular.ttf';
+}
+ul{
+  display: flex;
+  flex: row-reverse;
+}
+.nav-item {
+  list-style: none;
+  border: 2px solid #ffad90;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+footer{
+  background-color: #ffdbc9;
+}

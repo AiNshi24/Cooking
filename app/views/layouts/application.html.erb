@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Cooking</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,7 +10,102 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="d-flex flex-column vh-100">
+
+    <header class="shadow-sm">
+      <nav class="navbar">
+        <div class="container">
+          <div class="header-left">
+            <%= link_to root_path, class:"navbar-brand p-3" do %>
+            <h1 class="logo">Cooking <%= image_tag 'logo.png', size: "80x80" %></h1>
+            <% end %>
+          </div>
+          <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">-->
+          <!--  <span class="navbar-toggler-icon"></span>-->
+          <!--</button>-->
+          <!--<div class="collapse navbar-collapse" id="navbarNavDropdown">-->
+            <ul class"navbar-nav ml-auto">
+            <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to user_path, class:'nav-link text-dark' do %>
+              <i class="fa-solid fa-user"></i> マイページ
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to recipes_path, class:'nav-link text-dark' do %>
+              <i class="fas fa-book-open"></i> レシピ一覧
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to destroy_user_session_path, class:'nav-link text-dark', method: :delete do %>
+              <i class="fas fa-sign-out-alt"></i> ログアウト
+              <% end %>
+            </li>
+
+            <% elsif admin_signed_in? %>
+            <li class="nav-item">
+              <%= link_to admin_path, class:'nav-link text-dark' do %>
+              <i class="fas fa-book-open"></i> レシピ一覧
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to admin_users_path, class:'nav-link text-dark' do %>
+              <i class="fas fa-users"></i> 会員一覧
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to admin_comments_path, class:'nav-link text-dark' do %>
+              <i class="fa-regular fa-comments"></i> コメント一覧
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to destroy_admin_session_path, class:'nav-link text-dark', method: :delete do %>
+              <i class="fas fa-sign-out-alt"></i> ログアウト
+              <% end %>
+            </li>
+
+            <% else %>
+            <li class="nav-item">
+              <%= link_to recipes_path, class:'nav-link text-dark' do %>
+              <i class="fas fa-book-open"></i> レシピ一覧
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to new_user_registration_path, class:'nav-link text-dark' do %>
+              <i class="fas fa-user-plus"></i> 新規登録
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to new_user_session_path, class:'nav-link text-dark' do %>
+              <i class="fas fa-sign-in-alt"></i> ログイン
+              <% end %>
+            </li>
+            <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!--<div class="mt-2">-->
+      <!--  <form id="forms" method="get">-->
+      <!--    <input id="sbox"  id="s" name="s" type="text" placeholder="レシピ名、材料名で検索"/>-->
+      <!--    <button type="submit" id="sbtn"><i class="fas fa-search"></i></button>-->
+      <!--  </form>-->
+      <!--</div>-->
+    </header>
+
+    <main class="mb-auto">
     <%= yield %>
+    </main>
+
+    <footer>
+      <div class="container mt-5">
+        <div class="row">
+          <div class="mx-auto">
+            <p>© 2023 Nishi All Rights Reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
   </body>
 </html>
