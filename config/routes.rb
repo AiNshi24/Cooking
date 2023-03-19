@@ -31,7 +31,6 @@ Rails.application.routes.draw do
       resources :comments, only: [:index, :create, :destroy]
       resource :book_marks, only: [:index, :create, :destroy]
   end
-    resources :ingredlents
     resources :food_stocks, only: [:new, :create, :index, :destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
