@@ -5,6 +5,11 @@
   src: url('../fonts/Pomeranian-Regular.ttf') format('opentype');
 }
 
+.flash_message{
+  background-color: #b1f9d0;
+  text-align: center;
+  font-size: 1px;
+}
 // header
 .navbar-brand{
   color: #cc6666;
@@ -30,7 +35,7 @@ footer{
   background-color: #ffdbc9;
 }
 
-// sign-up
+// sign_up
 .field_with_errors {
   display: inline;
 }
@@ -43,29 +48,29 @@ footer{
   background-color: #ffdbc9;
   border-radius: 5px;
 }
-.sign-up > label{
+.sign_up > label{
   width: 200px;
   margin-right: 30px;
 }
-.sign-up-name{
+.sign_up_name{
   width: 100px;
 }
-.sign-up-email{
+.sign_up_email{
   width: 250px;
 }
-.sign-up-btn{
+.sign_up_btn{
   width: 150px;
   margin-left: 150px;
 }
 
-// log-in
-.log-in > label{
+// login
+.login > label{
   width: 200px;
 }
-.log-in-field{
+.login_field{
   width: 250px;
 }
-.log-in-btn{
+.login_btn{
   width: 150px;
   margin-left: 150px;
 }

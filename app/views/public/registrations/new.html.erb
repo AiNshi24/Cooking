@@ -1,5 +1,7 @@
 <div class="container">
+  <div class="flash_message">
   <%= flash[:notice] %>
+  </div>
   <div class="title">
     <h2>新規会員登録</h2>
   </div>
@@ -8,34 +10,34 @@
       <%= form_with model: @user, url: user_registration_path do |f| %>
         <%= render "public/shared/error_messages", resource: resource %>
         
-        <div class="field sign-up">
+        <div class="field sign_up">
           <%= f.label :validationName, "お名前" %>
-          <%= f.text_field :name, placeholder: "はなこ", class:"sign-up-name" %>
+          <%= f.text_field :name, placeholder: "はなこ", class:"sign_up_name" %>
         </div>
           
-        <div class="field sign-up mt-2">
+        <div class="field sign_up mt-2">
           <%= f.label :email, "メールアドレス" %>
-          <%= f.email_field :email, autofocus: true, placeholder: "sample@example.com", autocomplete: "email", class:"sign-up-email" %>
+          <%= f.email_field :email, autofocus: true, placeholder: "sample@example.com", autocomplete: "email", class:"sign_up_email" %>
         </div>
       
-        <div class="field sign-up mt-2">
+        <div class="field sign_up mt-2">
           <%= f.label :password, "パスワード（６文字以上）" %>
-          <%= f.password_field :password, autocomplete: "new-password" %>
+          <%= f.password_field :password, autocomplete: "new_password" %>
         </div>
       
-        <div class="field sign-up mt-2">
+        <div class="field sign_up mt-2">
           <%= f.label :password_confirmation, "パスワード（確認用）" %>
-          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new_password" %>
         </div>
       
         <div class="actions">
-          <%= f.submit "新規登録", class:"btn btn-warning d-block sign-up-btn mt-5" %>
+          <%= f.submit "新規登録", class:"btn btn-warning d-block sign_up_btn mt-5" %>
         </div>
       <% end %>
     
   <%#= render "public/shared/links" %>
   
-      <div class="login mt-4">
+      <div class="mt-4">
         <%= link_to "ログイン画面へ", new_user_session_path %>
       </div>
     </div>
