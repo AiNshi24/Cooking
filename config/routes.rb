@@ -22,9 +22,10 @@ Rails.application.routes.draw do
     root to: "homes#top"
     resources :registrations, only: [:new, :create]
     resources :sessions, only: [:new, :create, :destroy]
+    post 'guests/guest_sign_in', to: 'guests#guest_sign_in'
     resources :users, only: [:show, :edit, :update]
-    get 'users/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
-    patch 'users/withdraw' => 'customers#withdraw', as: 'withdraw'
+    get 'users/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
+    patch 'users/withdraw' => 'users#withdraw', as: 'withdraw'
     delete 'recipes/destroy_all'
     resources :recipes do 
       resources :comments, only: [:index, :create, :destroy]
