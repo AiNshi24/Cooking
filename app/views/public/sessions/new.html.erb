@@ -1,26 +1,35 @@
-<h2>Log in</h2>
-
-<%= form_with model: @user, url: user_session_path do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="container">
+  <%= flash[:notice] %>
+  <div class="title">
+    <h2>ログイン</h2>
   </div>
+  <div class="row">
+    <div class="mx-auto mt-5">
+      <%= form_with model: @user, url: user_session_path do |f| %>
+        <div class="field log-in">
+          <%= f.label :email, "メールアドレス" %>
+          <%= f.email_field :email, autofocus: true, placeholder: "sample@example.com", autocomplete: "email", class:"log-in-field" %>
+        </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+        <div class="field log-in mt-2">
+          <%= f.label :password, "パスワード" %>
+          <%= f.password_field :password, autocomplete: "current-password", class:"log-in-field" %>
+        </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+        <% if devise_mapping.rememberable? %>
+          <div class="field mt-2">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me, "パスワードを保存する" %>
+          </div>
+        <% end %>
+
+        <div class="actions">
+          <%= f.submit "ログイン", class:"btn btn-warning d-block log-in-btn mt-5" %>
+        </div>
+      <% end %>
+      <%= link_to "ゲストログイン", guests_guest_sign_in_path, method: :post, class:"btn btn-info d-block log-in-btn mt-3" %>
+      </div>
     </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "public/shared/links" %>
+  <%#= render "public/shared/links" %>
+</div>

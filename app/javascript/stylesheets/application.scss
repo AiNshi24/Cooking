@@ -31,6 +31,9 @@ footer{
 }
 
 // sign-up
+.field_with_errors {
+  display: inline;
+}
 .title h2{
   margin-top: 20px;
   margin-bottom: 30px;
@@ -50,11 +53,19 @@ footer{
 .sign-up-email{
   width: 250px;
 }
-// .sign-up-field{
-//   width: 300px;
-// }
 .sign-up-btn{
   width: 150px;
   margin-left: 150px;
-  
+}
+
+// log-in
+.log-in > label{
+  width: 200px;
+}
+.log-in-field{
+  width: 250px;
+}
+.log-in-btn{
+  width: 150px;
+  margin-left: 150px;
 }

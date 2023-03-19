@@ -9,10 +9,10 @@
         <%= render "public/shared/error_messages", resource: resource %>
         
         <div class="field sign-up">
-          <%= f.label :name, "お名前" %>
+          <%= f.label :validationName, "お名前" %>
           <%= f.text_field :name, placeholder: "はなこ", class:"sign-up-name" %>
         </div>
-      
+          
         <div class="field sign-up mt-2">
           <%= f.label :email, "メールアドレス" %>
           <%= f.email_field :email, autofocus: true, placeholder: "sample@example.com", autocomplete: "email", class:"sign-up-email" %>
@@ -20,12 +20,12 @@
       
         <div class="field sign-up mt-2">
           <%= f.label :password, "パスワード（６文字以上）" %>
-          <%= f.password_field :password, autocomplete: "new-password", class:"sign-up-field" %>
+          <%= f.password_field :password, autocomplete: "new-password" %>
         </div>
       
         <div class="field sign-up mt-2">
           <%= f.label :password_confirmation, "パスワード（確認用）" %>
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"sign-up-field" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
         </div>
       
         <div class="actions">
