@@ -5,4 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# 管理者ログイン用
 Admin.create(email: 'kanri@111', password: 'kanrisha')
+
+Tag.create([
+  { name: '栄養満点' },
+  { name: 'ボリューム満点' },
+  { name: '時短' },
+  { name: '節約' },
+  { name: 'ヘルシー' },
+  { name: '本格的' }
+])
