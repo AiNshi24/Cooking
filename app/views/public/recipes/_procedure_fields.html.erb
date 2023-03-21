@@ -1,0 +1,15 @@
+<div class="nested-fields">
+  <%= f.hidden_field :_destroy %>
+  <div class="procedures">
+    <p class="procedure_number"></p>
+    <%= f.text_area :description, class:"procedure_input"%>
+    <%= link_to '#', class:"remove-field-btn" do %>
+      <%= image_tag 'delete', class:"js-remove_fields" %>
+    <% end %>
+    手順写真
+    <%= f.file_field :image, placeholder: "ファイルを選択", accept: "image/*", class:"image" %>
+    <div class="procedure_form-img">
+      <%#= image_tag :procedure.get_image %>
+    </div>
+  </div>
+</div>

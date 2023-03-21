@@ -1,2 +1,68 @@
-<h1>Public::Recipes#new</h1>
-<p>Find me in app/views/public/recipes/new.html.erb</p>
+<main>
+  <div class="container">
+    <div class="flash_message">
+    <%= flash[:notice] %>
+    </div>
+    
+    <% if @recipe.errors.any? %>
+    <div class="error_explanation">
+    <h2><%= @recipe.errors.count %> errors prohibited this recipe from being saved:</h2>
+    <ul>
+      <% @recipe.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+    </div>
+    <% end %>
+    
+    <div class="new_recipe">
+      <%= form_with model: @recipe, url: recipes_path do |f| %>
+      <div class="img_field">
+        <div class="cooking-title">出来上がり写真</div>
+          <div class="img_select">
+            <%= f.file_field :image, placeholder: "ファイルを選択", accept: "image/*", class:"image" %>
+          </div>
+          <div id="new-image">
+          </div>
+        </div>
+        
+        <div class="about">
+          <div class="cooking-title">レシピタイトル</div>
+          <%= f.text_field :title, placeholder: "タイトル(50文字以内)" %>
+          <div class="cooking-title">材料</div>
+          <section class="ingredient">
+            <%= f.fields_for :ingredients do |ingredient| %>
+              <%= render "ingredient_fields", f: ingredient %>
+            <% end %>
+            <%= link_to_add_fields "材料を追加", f, :ingredients %>
+          </section>
+        </div>
+        
+        <div class="process">
+          <div class="cooking-title">作り方</div>
+          <section class="procedure">
+            <%= f.fields_for :procedures do |procedure| %>
+              <%= render "procedure_fields", f: procedure %>
+            <% end %>
+            <%= link_to_add_fields "手順を追加", f, :procedures %>
+          </section>
+        </div>
+        
+        <div class="tag_select">
+          <div class="cooking-title">関連タグ</div>
+          <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+            <%= tag.label class:"tag__item" do %>
+              <%= tag.check_box class:"tag__checkbox" %>
+              <%= tag.text %>
+            <% end %>
+          <% end %>
+        </div>
+        
+        <div class="actions">
+          <%= f.submit "レシピを投稿する", class:"btn btn-warning d-block" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</main>  
+   
