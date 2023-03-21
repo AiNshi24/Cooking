@@ -12,7 +12,7 @@ class Public::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notice] = "編集を保存しました"
+      flash[:notice] = "編集を保存しました。"
       redirect_to user_path(@user.id)
     else render :edit
     end 
@@ -29,7 +29,7 @@ class Public::UsersController < ApplicationController
     else
       @user.update(is_deleted: true)
       reset_session
-      flash[:notice] = "退会処理を実行いたしました"
+      flash[:notice] = "退会処理を実行いたしました。"
       redirect_to root_path
     end
   end
