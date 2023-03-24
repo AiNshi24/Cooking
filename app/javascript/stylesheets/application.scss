@@ -76,7 +76,22 @@ footer{
 }
 
 // recipe
-.new-image{
+.new-img{
   width: 400px;
   object-fit: cover;
+}
+.cooking-title{
+  color: #cc6666;
+  text-decoration: underline;
+  text-decoration-color: #ffcccc;
+}
+.recipe_action{
+  margin-left: 150px;
+}
+.add_btn{
+  // margin-left: 150px;
+  background-color: #ffcccc;
+}
+.procedure_input{
+  width: 380px;
 }

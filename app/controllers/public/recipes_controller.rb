@@ -8,6 +8,7 @@ class Public::RecipesController < ApplicationController
   def new
     @recipe = Recipe.new
     @ingredient = @recipe.ingredients.build
+    @procedure = @recipe.procedures.build
   end
   
   def create

@@ -1,12 +1,12 @@
 <div class="nested-fields">
   <%= f.hidden_field :_destroy %>
-  <div class="ingredients">
-    <%= f.text_field :content, placeholder: "材料", class:"ingredient_content"%>
-    <%= f.text_field :quantity, placeholder: "分量", class:"ingredient_quantity" %>
-    <div class="delete">
-    <%= link_to_remove_association "削除", f %>
-      <%#= image_tag 'delete', class:"js-remove_fields" %>
-    <%# end %>
+  <div class="ingredients d-flex mb-2">
+    <%= f.text_field :content, placeholder: "材料", class:"ingredient_content mr-2"%>
+    <%= f.text_field :quantity, placeholder: "分量", class:"ingredient_quantity mr-1" %>
+    <div class="delete d-flex">
+      <%= link_to_remove_association f, class:"btn btn-sm" do %>
+      <i class="far fa-trash-alt"></i>
+      <% end %>
     </div>
   </div>
 </div>
