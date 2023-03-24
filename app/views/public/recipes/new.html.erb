@@ -31,10 +31,12 @@
           <%= f.text_field :title, placeholder: "タイトル(50文字以内)" %>
           <div class="cooking-title">材料</div>
           <section class="ingredient">
-            <%= f.fields_for :ingredients do |ingredient| %>
-              <%= render "ingredient_fields", f: ingredient %>
+            <%= f.fields_for :ingredients do |form| %>
+              <%= render "ingredient_fields", f: form %>
+                </div>
+              </div>
             <% end %>
-            <%= link_to_add_fields "材料を追加", f, :ingredients %>
+            <%= link_to_add_association "材料を追加", f, :ingredients %>
           </section>
         </div>
         

@@ -3,8 +3,10 @@
   <div class="ingredients">
     <%= f.text_field :content, placeholder: "材料", class:"ingredient_content"%>
     <%= f.text_field :quantity, placeholder: "分量", class:"ingredient_quantity" %>
-    <%= link_to '#', class:"remove-field-btn" do %>
-      <%= image_tag 'delete', class:"js-remove_fields" %>
-    <% end %>
+    <div class="delete">
+    <%= link_to_remove_association "削除", f %>
+      <%#= image_tag 'delete', class:"js-remove_fields" %>
+    <%# end %>
+    </div>
   </div>
 </div>

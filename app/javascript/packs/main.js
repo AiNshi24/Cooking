@@ -1,3 +1,7 @@
+window.addEventListener('turbolinks:load', function () {
+	new addFields();
+	new removeFields();
+});
 
 
 class addFields {
@@ -55,5 +59,3 @@ class removeFields {
 }
   
  
- 
-
