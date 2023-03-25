@@ -82,8 +82,7 @@ footer{
 }
 .cooking-title{
   color: #cc6666;
-  text-decoration: underline;
-  text-decoration-color: #ffcccc;
+  border-bottom: 2px solid #ffcccc;
 }
 .recipe_action{
   margin-left: 150px;
@@ -93,4 +92,32 @@ footer{
 }
 .procedure_input{
   width: 380px;
+}
+.contents{
+  width: 270px;
+}
+.quantity{
+  // margin-left:;
+}
+.recipe_edit_btn{
+  height: 30px;
+}
+.recipe_user{
+  margin-left: 570px;
+}
+.ingredients{
+  border-bottom: 1px solid #ffcc99;
+}
+.procedures{
+  border-bottom: 1px solid #ffcc99;
+}
+.recipe_img{
+  width: 500px;
+}
+.comment_field{
+  width: 400px;
+}
+.send_comment{
+  color: #cc6600;
+  border-bottom: 2px solid #ffcc66;
 }

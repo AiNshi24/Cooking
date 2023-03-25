@@ -1,0 +1,10 @@
+<p>コメント件数：<%= @recipe.comments.count %></p>
+<div class="recipe_comments mb-3">
+          <%= form_with model: [@recipe, @comment] do |f| %>
+            <div class="mb-3">
+            <%= f.file_field :image, placeholder: "ファイルを選択", accept: "image/*", class:"" %>
+            </div>
+            <%= f.text_area :comment, rows: '5', placeholder: "コメントを書く（100文字)", class:"comment_field" %>
+            <%= f.submit "送信する", class:"btn btn-info btn-sm mb-3 ml-2" %>
+          <% end %>
+        </div>
