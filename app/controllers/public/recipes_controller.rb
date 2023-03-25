@@ -23,6 +23,8 @@ class Public::RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    @comments = @recipe.comments
+    @comment = current_user.comments.new
   end
 
   def edit
@@ -44,7 +46,7 @@ class Public::RecipesController < ApplicationController
     def recipe_params
       params.require(:recipe).permit(:user_id, :title, :image, tag_ids: [],
         ingredients_attributes: [:id, :content, :quantity, :_destroy],
-        procedures_attributes: [:id, :description, :image, :_destroy])
+        procedures_attributes: [:id, :description, :_destroy])
     end
     
     # アクセス制限
