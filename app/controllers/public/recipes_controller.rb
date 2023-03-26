@@ -23,7 +23,7 @@ class Public::RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
-    @comments = @recipe.comments
+    # @comments = @recipe.comments
     @comment = current_user.comments.new
   end
 

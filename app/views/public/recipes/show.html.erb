@@ -31,7 +31,7 @@
             <% end %>
         </div>
         <div class="recipe_img">
-          <%= @recipe.image %>
+          <%= image_tag @recipe.get_image %>
         </div>
       </div>
       <div class="col-6">
@@ -53,14 +53,7 @@
       </div>
       <% end %>
     </div>
-    <div class="send_comment font-weight-bold mt-5 mb-3">コメントする</div>
-    <% if @recipe.comments.count == 0 %>
-      <p>コメント件数：<%= @recipe.comments.count %></p>
-    <% else %>
-      <%= link_to recipe_comments_path(@recipe.id) do %>
-        <p>コメント件数：<%= @recipe.comments.count %></p>
-      <% end %>
-    <% end %>
+    <div class="send_comment font-weight-bold mt-5 mb-3">コメント</div>
 
     <div class="recipe_comments mb-3">
       <%= form_with model: [@recipe, @comment] do |f| %>
@@ -69,6 +62,21 @@
         </div>
         <%= f.text_area :comment, rows: '5', placeholder: "コメントを書く（100文字)", class:"comment_field" %>
         <%= f.submit "送信する", class:"btn btn-info btn-sm mb-3 ml-2" %>
+      <% end %>
+    </div>
+    <div class="mb-5">
+      <p>コメント件数：<%= @recipe.comments.count %></p>
+      <% @recipe.comments.each do |comment| %>
+        <%= image_tag comment.user.get_profile_image(50,50) %>
+        <%= comment.user.name %>
+        <% if comment.user == current_user %>
+          <%= link_to "削除", recipe_comment_path(comment.recipe, comment), method: :delete, class:"btn btn-outline-danger btn-sm ml-5" %>
+        <% end %>
+        <div class="d-flex mb-3">
+        <div class="comment_img mr-2"><%= image_tag comment.get_image %></div>
+        <%= comment.comment %><br>
+        <%= comment.created_at.strftime('%Y/%m/%d') %>
+        </div>
       <% end %>
     </div>
   </div>

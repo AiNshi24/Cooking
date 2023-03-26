@@ -111,7 +111,7 @@ footer{
 .procedures{
   border-bottom: 1px solid #ffcc99;
 }
-.recipe_img{
+.recipe_img > img{
   width: 500px;
 }
 .comment_field{
@@ -120,4 +120,7 @@ footer{
 .send_comment{
   color: #cc6600;
   border-bottom: 2px solid #ffcc66;
+}
+.comment_img > img{
+  width: 120px;
 }
