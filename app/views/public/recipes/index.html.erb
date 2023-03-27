@@ -1,2 +1,63 @@
-<h1>Public::Recipes#index</h1>
-<p>Find me in app/views/public/recipes/index.html.erb</p>
+<main>
+  <div class="container">
+    <div class="flash_message">
+    <%= flash[:notice] %>
+    </div>
+    <div class="title d-flex">
+      <h2 class="ml-0">レシピ一覧</h2>
+    </div>
+    <div>
+      <%= form_tag recipes_path, method: :get, class:'tag_search' do %>
+        <%= select_tag :tag_id,
+                       options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+                       {
+                         prompt: 'タグで絞り込み検索',
+                         onchange: 'submit(this.form);'
+                       }
+        %>
+      <% end %>
+    </div>
+    <div class="row">
+      <% @recipes.each do |recipe| %>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card mt-4">
+          <%= link_to recipe_path(recipe.id) do %>
+            <%= image_tag recipe.get_image, class:"card-img-top" %>
+          <% end %>
+            <div class="card-body">
+              <%= link_to recipe_path(recipe.id), class:"title_link" do %>
+                <p class="card-title text-dark"><%= recipe.title %></p>
+              <% end %>
+              <div class="recipe_card d-flex">
+                <% if recipe.favorited_by?(current_user) %>
+                <p class="mt-2">
+                  <%= link_to recipe_book_marks_path(recipe), class:"book_marks", method: :delete do %>
+                    ♥ <%= recipe.book_marks.count %>
+                  <% end %>
+                </p>
+                <% else %>
+                <p class="mt-2">
+                  <%= link_to recipe_book_marks_path(recipe), class:"book_marks", method: :post do %>
+                    ♡ <%= recipe.book_marks.count %>
+                  <% end %>
+                  </p>
+                <% end %>
+                <div class="ml-2 mt-2">
+                  <%= link_to recipe_path(recipe.id), class:"text-dark comments_count" do %>
+                    <i class="fa-regular fa-comment"></i> <%= recipe.comments.count %>
+                  <% end %>
+                </div>
+                <div>
+                  <%= link_to user_path(recipe.user.id) do %>
+                    <%= image_tag recipe.user.get_profile_image(50,50), class:"rounded-circle" %>
+                    <%= recipe.user.name %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</main>

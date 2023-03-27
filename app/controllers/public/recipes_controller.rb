@@ -1,8 +1,13 @@
 class Public::RecipesController < ApplicationController
-  before_action :is_matching_login_user, only: [:edit, :update]
+  before_action :is_matching_login_user, only: [:new, :create, :edit, :update, :destroy]
   
   def index
-    @recipes = Recipe.page(params[:page])
+    @recipes = params[:tag_id].present? ? Tag.find(params[:tag_id]).recipes : Recipe
+    if user_signed_in?
+      @recipes = @recipes.includes([:user], [:book_marks]).page(params[:page])
+    else
+      @recipes = @recipes.includes([:user]).page(params[:page])
+    end
   end
 
   def new
