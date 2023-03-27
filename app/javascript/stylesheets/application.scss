@@ -100,7 +100,7 @@ footer{
   // margin-left:;
 }
 .recipe_edit_btn{
-  height: 30px;
+  // height: 30px;
 }
 .recipe_user{
   margin-left: 570px;
@@ -123,4 +123,12 @@ footer{
 }
 .comment_img > img{
   width: 120px;
+}
+.book_marks{
+  text-decoration: none;
+  color: #ff0461;
+}
+.book_marks:hover{
+  text-decoration: none;
+  color: #ff69a3;
 }

@@ -5,13 +5,30 @@
     </div>
     <div class="title d-flex">
       <h2 class="ml-0"><%= @recipe.title %></h2>
+      <div class="mt-4 ml-5">
+        <% if @recipe.favorited_by?(current_user) %>
+          <div>
+            <%= link_to recipe_book_marks_path(@recipe), class:"book_marks", method: :delete do %>
+              <h4>♥ <%= @recipe.book_marks.count %></h4>
+            <% end %>
+          </div>
+          <% else %>
+          <div>
+            <%= link_to recipe_book_marks_path(@recipe), class:"book_marks", method: :post do %>
+              <h4>♡ <%= @recipe.book_marks.count %></h4>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
       <div class="recipe_user mt-2">
         <%= link_to user_path(@recipe.user.id) do %>
           <%= image_tag @recipe.user.get_profile_image(50,50) %>
           <%= @recipe.user.name %>
         <% end %>
+        </div>
+        <div>
         <% if @recipe.user == current_user %>
-          <%= link_to "レシピ編集", edit_recipe_path(@recipe.id), class:"recipe_edit_btn btn btn-sm btn-outline-warning ml-5" %>
+          <%= link_to "レシピ編集", edit_recipe_path(@recipe.id), class:"recipe_edit_btn btn btn-sm btn-outline-warning ml-5 mt-3" %>
         <% end %>
       </div>
     </div>
@@ -46,16 +63,18 @@
     </div>
     <div>
       <div class="cooking-title font-weight-bold mt-3">作り方</div>
-      <% @recipe.procedures.each do |procedure| %>
+      <% @recipe.procedures.each.with_index(1) do |procedure, idx| %>
       <div class="d-flex mb-3 mt-3 procedures">
-        <div class="number mr-3"><%= procedure.id %></div>
+        <!--<div class="number mr-3"><%#= procedure.id %></div>-->
+        <div class="number mr-3"><%= idx %></div>
         <div><%= procedure.description %></div>
       </div>
       <% end %>
     </div>
+    
     <div class="send_comment font-weight-bold mt-5 mb-3">コメント</div>
-
-    <div class="recipe_comments mb-3">
+    <div class="row">
+    <div class="recipe_comments mb-3 col-6">
       <%= form_with model: [@recipe, @comment] do |f| %>
         <div class="mb-3">
         <%= f.file_field :image, placeholder: "ファイルを選択", accept: "image/*", class:"" %>
@@ -64,7 +83,7 @@
         <%= f.submit "送信する", class:"btn btn-info btn-sm mb-3 ml-2" %>
       <% end %>
     </div>
-    <div class="mb-5">
+    <div class="mb-5 col-6">
       <p>コメント件数：<%= @recipe.comments.count %></p>
       <% @recipe.comments.each do |comment| %>
         <%= image_tag comment.user.get_profile_image(50,50) %>
@@ -78,6 +97,7 @@
         <%= comment.created_at.strftime('%Y/%m/%d') %>
         </div>
       <% end %>
+    </div>
     </div>
   </div>
 </main>

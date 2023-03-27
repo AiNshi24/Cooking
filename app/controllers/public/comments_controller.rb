@@ -9,7 +9,7 @@ class Public::CommentsController < ApplicationController
     comment.recipe_id = recipe.id
     if comment.save
       flash[:notice] = "コメントを投稿しました。"
-      redirect_to comment.recipe
+      redirect_to recipe_path(params[:recipe_id])
     else
       redirect_to recipe_path(params[:recipe_id])
     end
