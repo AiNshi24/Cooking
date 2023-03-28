@@ -5,5 +5,14 @@ class Ingredient < ApplicationRecord
   validates :content, presence: true
   validates :quantity, presence: true
   
+  
+  def self.ransackable_attributes(auth_object = nil)
+    ["content"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["recipe"]
+  end
+
 end
 

@@ -9,6 +9,8 @@ class Public::RecipesController < ApplicationController
     else
       @recipes = @recipes.includes([:user]).page(params[:page])
     end
+    @q = Recipe.ransack(params[:q])
+    @recipe = @q.result(distinct: true).includes(:user).page(params[:page]).order("created_at desc")
   end
 
   def new
@@ -49,11 +51,14 @@ class Public::RecipesController < ApplicationController
   
   def search
     @q = Recipe.ransack(params[:q])
-    if user_signed_in?
-      @recipes = @q.result(distinct: true).includes([:book_marks]).page(params[:page])
-    else
-      @recipes = @q.result(distinct: true).includes([:user]).page(params[:page])
-    end
+    @recipes = @q.result(distinct: true).includes(:user).page(params[:page]).order("created_at desc")
+    # render 'public/recipes/index'
+    redirect_to recipes_path
+    # if user_signed_in?
+    #   @recipes = @q.result(distinct: true).includes([:book_marks]).page(params[:page])
+    # else
+    #   @recipes = @q.result(distinct: true).includes([:user]).page(params[:page])
+    # end
   end
   
   private
