@@ -1,5 +1,6 @@
 class Public::RecipesController < ApplicationController
   before_action :is_matching_login_user, only: [:new, :create, :edit, :update, :destroy]
+  before_action :search
   
   def index
     @recipes = params[:tag_id].present? ? Tag.find(params[:tag_id]).recipes : Recipe
@@ -43,6 +44,15 @@ class Public::RecipesController < ApplicationController
     redirect_to recipe_path(@recipe.id)
     else
       render :edit
+    end
+  end
+  
+  def search
+    @q = Recipe.ransack(params[:q])
+    if user_signed_in?
+      @recipes = @q.result(distinct: true).includes([:book_marks]).page(params[:page])
+    else
+      @recipes = @q.result(distinct: true).includes([:user]).page(params[:page])
     end
   end
   

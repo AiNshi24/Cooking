@@ -38,4 +38,8 @@ class Recipe < ApplicationRecord
   def favorited_by?(user)
     book_marks.exists?(user_id: user.id)
   end
+  
+  def self.ransackable_associations(auth_object = nil)
+    ["title", "ingredient"]
+  end
 end

@@ -133,10 +133,7 @@ footer{
   color: #ff69a3;
 }
 
-.recipe_index{
-  background-color: #ffdbc9;
-}
-.card{
+.recipe_card{
   margin: 0 auto 60px;
   max-width: 350px;
   height: 380px;
@@ -144,9 +141,30 @@ footer{
 .title_link:hover{
   text-decoration: none;
 }
-.recipe_card{
+.recipe_card_body{
   margin-left: 160px;
 }
 .comments_count:hover{
   text-decoration: none;
+}
+// top
+.introduction{
+  background-color: #ffdbc9;
+}
+.card-img{
+  width: 900px;
+  height: 500px;
+}
+.card-img-overlay{
+  background-color: white;
+  height: 180px;
+  width: 400px;
+  margin-top: 200px;
+  text-align: center;
+}
+.top_title{
+  color: #cc6666;
+}
+.top_card{
+  margin-left: 150px;
 }

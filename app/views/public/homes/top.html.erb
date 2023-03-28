@@ -1,5 +1,62 @@
-<div class="container">
-  <div class="flash_message">
-  <%= flash[:notice] %>
+<main style="background-color:#fdf5e6;">
+  <div class="container">
+    <div class="flash_message">
+    <%= flash[:notice] %>
+    </div>
+    <div class="back-image pt-5 mb-5">
+      <div class="card introduction">
+        <%= image_tag "cooking.jpeg", class:"card-img mx-auto mt-5 mb-5" %>
+        <div class="card-img-overlay mx-auto">
+          <h1 class="top_title">Let's cooking!</h1>
+          <p class="mt-3">
+            家にある食材を管理しながら<br>
+            楽しく料理をしよう!
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <h3 class="cooking-title font-weight-bold">新着レシピ</h3>
+    <div class="d-flex">
+      <% @recipes.each do |recipe| %>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card recipe_card mt-4">
+            <%= link_to recipe_path(recipe.id) do %>
+              <%= image_tag recipe.get_image, class:"card-img-top" %>
+            <% end %>
+            <div class="card-body">
+              <%= link_to recipe_path(recipe.id), class:"title_link" do %>
+                <h5 class="card-title text-dark font-weight-bold"><%= recipe.title %></h5>
+              <% end %>
+              <div class="top_card d-flex">
+                <% if recipe.favorited_by?(current_user) %>
+                  <p class="mt-2 book_marks">
+                    ♥ <%= recipe.book_marks.count %>
+                  </p>
+                <% else %>
+                  <p class="mt-2 book_marks">
+                    ♡ <%= recipe.book_marks.count %>
+                  </p>
+                <% end %>
+                <div class="ml-2 mt-2">
+                  <%= link_to recipe_path(recipe.id), class:"text-dark comments_count" do %>
+                    <i class="fa-regular fa-comment"></i> <%= recipe.comments.count %>
+                  <% end %>
+                </div>
+                <div>
+                  <%= link_to user_path(recipe.user.id) do %>
+                    <%= image_tag recipe.user.get_profile_image(50,50), class:"rounded-circle" %>
+                    <%= recipe.user.name %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+      <div class="more pb-3 ml-3">
+        <%= link_to "もっと見る>", recipes_path %>
+      </div>
   </div>
-</div>
+</main>
