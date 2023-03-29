@@ -23,14 +23,16 @@ Rails.application.routes.draw do
     resources :registrations, only: [:new, :create]
     resources :sessions, only: [:new, :create, :destroy]
     post 'guests/guest_sign_in' => 'guests#guest_sign_in'
-    resources :users, only: [:show, :edit, :update]
+    resources :users, only: [:show, :edit, :update] do
+      get :book_marks, on: :collection
+    end
     get 'users/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
     patch 'users/withdraw' => 'users#withdraw', as: 'withdraw'
     delete 'recipes/destroy_all'
     get 'recipes/search' => 'recipes#search'
     resources :recipes do 
-      resources :comments, only: [:index, :create, :destroy]
-      resource :book_marks, only: [:index, :create, :destroy]
+      resources :comments, only: [:create, :destroy, :index]
+      resource :book_marks, only: [:create, :destroy, :index]
   end
     resources :food_stocks, only: [:new, :create, :index, :destroy]
   end
