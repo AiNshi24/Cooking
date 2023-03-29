@@ -1,7 +1,6 @@
 class Public::RecipesController < ApplicationController
   before_action :is_matching_login_user, only: [:new, :create, :edit, :update, :destroy]
-  before_action :search
-  
+
   def index
     @recipes = params[:tag_id].present? ? Tag.find(params[:tag_id]).recipes : Recipe
     if user_signed_in?
@@ -18,7 +17,7 @@ class Public::RecipesController < ApplicationController
     @ingredient = @recipe.ingredients.build
     @procedure = @recipe.procedures.build
   end
-  
+
   def create
   @recipe = current_user.recipes.new(recipe_params)
     if @recipe.save
@@ -38,7 +37,7 @@ class Public::RecipesController < ApplicationController
   def edit
     @recipe = Recipe.find(params[:id])
   end
-  
+
   def update
     @recipe = Recipe.find(params[:id])
     if @recipe.update(recipe_params)
@@ -48,19 +47,20 @@ class Public::RecipesController < ApplicationController
       render :edit
     end
   end
-  
+
   def search
     @q = Recipe.ransack(params[:q])
     @recipes = @q.result(distinct: true).includes(:user).page(params[:page]).order("created_at desc")
-    # render 'public/recipes/index'
-    redirect_to recipes_path
+    render 'public/recipes/index'
+    # render 'public/recipes/search'
     # if user_signed_in?
     #   @recipes = @q.result(distinct: true).includes([:book_marks]).page(params[:page])
     # else
     #   @recipes = @q.result(distinct: true).includes([:user]).page(params[:page])
     # end
+    @search = params[:q][:title_or_ingredients_content_cont]
   end
-  
+
   private
 
     def recipe_params
@@ -68,7 +68,7 @@ class Public::RecipesController < ApplicationController
         ingredients_attributes: [:id, :content, :quantity, :_destroy],
         procedures_attributes: [:id, :description, :_destroy])
     end
-    
+
     # アクセス制限
     def is_matching_login_user
       @recipe = Recipe.find(params[:id])
@@ -76,5 +76,5 @@ class Public::RecipesController < ApplicationController
         redirect_to recipes_path
       end
     end
-  
+
 end

@@ -1,6 +1,4 @@
 class Public::BookMarksController < ApplicationController
-  def index
-  end
   
   def create
     recipe = Recipe.find(params[:recipe_id])
