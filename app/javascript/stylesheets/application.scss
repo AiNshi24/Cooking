@@ -79,6 +79,9 @@ footer{
 }
 
 // recipe
+.user_img{
+  object-fit: cover;
+}
 .new-img{
   width: 400px;
   object-fit: cover;
@@ -145,7 +148,7 @@ footer{
   text-decoration: none;
 }
 .recipe_card_body{
-  margin-left: 160px;
+  // margin-left: 140px;
 }
 .comments_count:hover{
   text-decoration: none;
@@ -169,7 +172,7 @@ footer{
   color: #cc6666;
 }
 .top_card{
-  margin-left: 150px;
+  // margin-left: 150px;
 }
 
 // mypage
@@ -183,4 +186,23 @@ footer{
 }
 .mypage_btn:hover{
   background-color: #fdf5e6;
+}
+.mypage_card_body{
+  // margin-left: 200px;
+}
+
+// profile_edit
+.edit-img{
+  width: 200px;
+  object-fit: cover;
+}
+.user_introduction{
+  width: 380px;
+  height: 100px;
+}
+.user_edit_btn{
+  margin-left: 120px;
+}
+.red_btn{
+  margin-left: 145px;
 }

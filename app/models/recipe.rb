@@ -35,10 +35,11 @@ class Recipe < ApplicationRecord
     errors.add(:base, "作り方は1つ以上登録してください。") if self.procedures.blank?
   end
   
-  def favorited_by?(user)
+  def bookmarked_by?(user)
     book_marks.exists?(user_id: user.id)
   end
   
+  # 検索機能
   def self.ransackable_associations(auth_object = nil)
     ["ingredients"]
   end

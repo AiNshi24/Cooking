@@ -5,7 +5,7 @@ class Ingredient < ApplicationRecord
   validates :content, presence: true
   validates :quantity, presence: true
   
-  
+  # 検索機能
   def self.ransackable_attributes(auth_object = nil)
     ["content"]
   end

@@ -13,12 +13,12 @@
           
           <div class="field sign_up">
             <%= f.label :validationName, "お名前" %>
-            <%= f.text_field :name, placeholder: "はなこ", class:"sign_up_name" %>
+            <%= f.text_field :name, autofocus: true, placeholder: "はなこ", class:"sign_up_name" %>
           </div>
             
           <div class="field sign_up mt-2">
             <%= f.label :email, "メールアドレス" %>
-            <%= f.email_field :email, autofocus: true, placeholder: "sample@example.com", autocomplete: "email", class:"sign_up_email" %>
+            <%= f.email_field :email, placeholder: "sample@example.com", autocomplete: "email", class:"sign_up_email" %>
           </div>
         
           <div class="field sign_up mt-2">

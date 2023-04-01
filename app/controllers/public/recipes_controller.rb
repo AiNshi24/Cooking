@@ -1,6 +1,7 @@
 class Public::RecipesController < ApplicationController
-  before_action :is_matching_login_user, only: [:create, :update, :destroy]
-
+  # before_action :is_matching_login_user, only: [:create, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
+  
   def index
     @recipes = params[:tag_id].present? ? Tag.find(params[:tag_id]).recipes : Recipe
     if user_signed_in?

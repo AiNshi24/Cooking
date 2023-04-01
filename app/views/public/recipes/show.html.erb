@@ -6,7 +6,7 @@
     <div class="title d-flex">
       <h2 class="ml-0"><%= @recipe.title %></h2>
       <div class="mt-4 ml-5">
-        <% if @recipe.favorited_by?(current_user) %>
+        <% if @recipe.bookmarked_by?(current_user) %>
           <div>
             <%= link_to recipe_book_marks_path(@recipe), class:"book_marks", method: :delete do %>
               <h4>♥ <%= @recipe.book_marks.count %></h4>
