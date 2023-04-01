@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     resources :sessions, only: [:new, :create, :destroy]
     post 'guests/guest_sign_in' => 'guests#guest_sign_in'
     resources :users, only: [:show, :edit, :update] do
-      get :book_marks, on: :collection
+      get :book_marks, on: :member
     end
     get 'users/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
     patch 'users/withdraw' => 'users#withdraw', as: 'withdraw'
@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     get 'recipes/search' => 'recipes#search'
     resources :recipes do 
       resources :comments, only: [:create, :destroy, :index]
-      resource :book_marks, only: [:create, :destroy, :index]
+      resource :book_marks, only: [:create, :destroy]
   end
     resources :food_stocks, only: [:new, :create, :index, :destroy]
   end
