@@ -54,7 +54,7 @@
       <div class="col-6">
         <div class="cooking-title font-weight-bold">材料</div>
           <% @recipe.ingredients.each do |ingredient| %>
-            <div class="ingredients d-flex mb-2 mt-2">
+            <div class="ingredients_detail d-flex mb-2 mt-2">
               <div class="contents"><%= ingredient.content %></div>
               <div class="guantity"><%= ingredient.quantity %></div>
             </div>
@@ -64,7 +64,7 @@
     <div>
       <div class="cooking-title font-weight-bold mt-3">作り方</div>
       <% @recipe.procedures.each.with_index(1) do |procedure, idx| %>
-      <div class="d-flex mb-3 mt-3 procedures">
+      <div class="d-flex mb-3 mt-3 procedures_detail">
         <!--<div class="number mr-3"><%#= procedure.id %></div>-->
         <div class="number mr-3"><%= idx %></div>
         <div><%= procedure.description %></div>

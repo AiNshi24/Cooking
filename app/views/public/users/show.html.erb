@@ -3,8 +3,22 @@
     <div class="flash_message">
     <%= flash[:notice] %>
     </div>
-    <div class="title d-flex">
-      <h2 class="ml-0">マイページ</h2>
+    <div class="d-flex">
+      <div>
+        <%= image_tag @user.get_profile_image(200,200), class:"rounded-circle" %>
+        <h3 class="mypage_name"><%= @user.name %></h3>
+        </div>
+      <div>
+        <%= @user.introduction %>
+      </div>
+    </div>
+    <div>
+      <% if @user == current_user %>
+      <%= link_to "プロフィール編集", edit_user_path, class:"btn mypage_btn text-dark" %>
+      <%= link_to"ブックマーク一覧",  book_marks_user_path, class:"btn mypage_btn text-dark" %>
+      <%= link_to "ストックリスト", food_stocks_path, class:"btn mypage_btn text-dark" %>
+      <%= link_to "レシピ投稿", new_recipe_path, class:"btn mypage_btn text-dark" %>
+      <% end %>
     </div>
   </div>
 </main>

@@ -30,6 +30,9 @@ ul{
   border-radius: 5px;
   margin-right: 5px;
 }
+.nav-item:hover{
+  background-color: #fdf5e6;
+}
 
 footer{
   background-color: #ffdbc9;
@@ -105,10 +108,10 @@ footer{
 .recipe_user{
   margin-left: 570px;
 }
-.ingredients{
+.ingredients_detail{
   border-bottom: 1px solid #ffcc99;
 }
-.procedures{
+.procedures_detail{
   border-bottom: 1px solid #ffcc99;
 }
 .recipe_img > img{
@@ -167,4 +170,17 @@ footer{
 }
 .top_card{
   margin-left: 150px;
+}
+
+// mypage
+.mypage_name{
+
+}
+.mypage_btn{
+  border: 2px solid #cc6666;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+.mypage_btn:hover{
+  background-color: #fdf5e6;
 }

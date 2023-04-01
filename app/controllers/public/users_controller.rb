@@ -3,9 +3,14 @@ class Public::UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+
+  end
+  
+  def book_marks
+    @user = User.find(params[:id])
     @recipes = @user.recipes
     @bookmarks = BookMark.where(user_id: current_user.id).pluck(:recipe_id)
-    @bookmark_list = Recipe.find(book_marks)
+    @bookmark_list = Recipe.find(@bookmarks)
   end
 
   def edit
