@@ -62,3 +62,5 @@ gem "cocoon"
 gem 'kaminari','~> 1.2.1'
 #検索機能
 gem 'ransack'
+# 日本語化
+gem 'rails-i18n'
