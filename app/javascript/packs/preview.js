@@ -1,4 +1,4 @@
-if (document.URL.match(/new/)){
+if (document.URL.match(/recipes\/new/)){
   document.addEventListener('DOMContentLoaded', () => {
     const createImageHTML = (blob) => {
       const imageElement = document.getElementById('new-image');
@@ -22,7 +22,7 @@ if (document.URL.match(/new/)){
   });
 }
 
-if (document.URL.match(/edit/)){
+if (document.URL.match(/recipes\/\d*\/edit/)){
   document.addEventListener('DOMContentLoaded', () => {
     const createImageHTML = (blob) => {
       const imageElement = document.getElementById('edit-new-image');
@@ -46,7 +46,7 @@ if (document.URL.match(/edit/)){
   });
 }
 
-if (document.URL.match(/edit/)){
+if (document.URL.match(/users\/\d*\/edit/)){
   document.addEventListener('DOMContentLoaded', () => {
     const createImageHTML = (blob) => {
       const imageElement = document.getElementById('edit-image');
