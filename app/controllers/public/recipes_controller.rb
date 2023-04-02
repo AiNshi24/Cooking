@@ -48,6 +48,13 @@ class Public::RecipesController < ApplicationController
       render :edit
     end
   end
+  
+  def destroy
+    @recipe = Recipe.find(params[:id])
+    @recipe.destroy
+    flash[:notice] = "レシピを削除しました。"
+    redirect_to recipes_path
+  end
 
   def search
     @q = Recipe.ransack(params[:q])

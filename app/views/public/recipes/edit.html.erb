@@ -1,2 +1,89 @@
-<h1>Public::Recipes#edit</h1>
-<p>Find me in app/views/public/recipes/edit.html.erb</p>
+<main>
+  <div class="container">
+    <div class="flash_message">
+    <%= flash[:notice] %>
+    </div>
+
+    <% if @recipe.errors.any? %>
+    <div class="error_explanation">
+    <h2><%= @recipe.errors.count %> 件のエラーがあります。</h2>
+    <ul>
+      <% @recipe.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+    </div>
+    <% end %>
+    
+    <div class="title d-flex">
+      <h2 class="ml-0">レシピ編集</h2>
+      
+    </div>
+    <div class="row">
+      <div class="edit_recipe mx-auto">
+        <div class="recipe_delete">
+          <%= link_to "削除する", recipe_path, method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger mb-2" %>
+        </div>
+        <%= form_with model: @recipe, url: edit_recipe_path do |f| %>
+        <div class="img_field">
+          <div class="cooking-title font-weight-bold mt-3 mb-1">出来上がり写真</div>
+            <div class="img_select">
+              <%= f.file_field :image, placeholder: "ファイルを選択", accept: "image/*", class:"image mb-2" %>
+            </div>
+            <div id="edit-new-image"></div>
+          </div>
+
+          <div class="about">
+            <div class="cooking-title font-weight-bold mt-3 mb-1">レシピタイトル</div>
+            <%= f.text_field :title, placeholder: "タイトル(50文字以内)" %>
+            <div class="cooking-title font-weight-bold mt-3 mb-1">材料</div>
+            <section class="ingredient">
+              <%= f.fields_for :ingredients do |ingredient| %>
+                <%= render "ingredient_fields", f: ingredient %>
+              <% end %>
+              <div id="detail-association-insertion-ingredients"></div>
+              <%= link_to_add_association "材料を追加", f, :ingredients,
+              class:"add_btn btn btn-sm",
+              data: {
+                association_insertion_node: '#detail-association-insertion-ingredients',
+                association_insertion_method: 'before'
+                }
+              %>
+            </section>
+          </div>
+
+          <div class="process">
+            <div class="cooking-title font-weight-bold mt-3 mb-1">作り方</div>
+            <section class="procedure">
+              <%= f.fields_for :procedures do |procedure| %>
+                <%= render "procedure_fields", f: procedure %>
+              <% end %>
+              <div id="detail-association-insertion-procedures"></div>
+              <%= link_to_add_association "手順を追加", f, :procedures,
+              class:"add_btn btn btn-sm",
+              data: {
+                association_insertion_node: '#detail-association-insertion-procedures',
+                association_insertion_method: 'before'
+                }
+              %>
+            </section>
+          </div>
+
+          <div class="tag_select">
+            <div class="cooking-title font-weight-bold mt-3 mb-1">関連タグ</div>
+            <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+              <%= tag.label class:"tag_item" do %>
+                <%= tag.check_box class:"tag_checkbox" %>
+                <%= tag.text %>
+              <% end %>
+            <% end %>
+          </div>
+
+          <div class="recipe_action">
+            <%= f.submit "レシピを編集する", class:"btn btn-warning d-block mt-3 mb-4" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</main>

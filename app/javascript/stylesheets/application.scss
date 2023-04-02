@@ -102,12 +102,6 @@ footer{
 .contents{
   width: 270px;
 }
-.quantity{
-  // margin-left:;
-}
-.recipe_edit_btn{
-  // height: 30px;
-}
 .recipe_user{
   margin-left: 570px;
 }
@@ -147,11 +141,13 @@ footer{
 .title_link:hover{
   text-decoration: none;
 }
-.recipe_card_body{
-  // margin-left: 140px;
-}
 .comments_count:hover{
   text-decoration: none;
+}
+// recipe_edit
+.edit-new-img{
+  width: 400px;
+  object-fit: cover;
 }
 // top
 .introduction{

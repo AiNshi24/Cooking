@@ -3,10 +3,10 @@
     <div class="flash_message">
     <%= flash[:notice] %>
     </div>
-
+  
     <% if @recipe.errors.any? %>
     <div class="error_explanation">
-    <h2><%= @recipe.errors.count %> errors prohibited this recipe from being saved:</h2>
+    <h2><%= @recipe.errors.count %> 件のエラーがあります。</h2>
     <ul>
       <% @recipe.errors.full_messages.each do |message| %>
       <li><%= message %></li>

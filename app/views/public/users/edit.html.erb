@@ -6,7 +6,7 @@
 
     <% if @user.errors.any? %>
     <div class="error_explanation">
-    <h2><%= @user.errors.count %> errors prohibited this recipe from being saved:</h2>
+    <h2><%= @user.errors.count %> 件のエラーがあります。</h2>
     <ul>
       <% @user.errors.full_messages.each do |message| %>
       <li><%= message %></li>

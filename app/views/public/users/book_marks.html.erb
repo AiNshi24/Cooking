@@ -3,6 +3,7 @@
     <div class="title d-flex">
       <h2 class="ml-0">ブックマーク一覧</h2>
     </div>
+    <div class="row">
     <% if @bookmark_list.present? %>
       <% @bookmark_list.each do |recipe| %>
          <div class="col-12 col-md-6 col-lg-4">
@@ -14,7 +15,7 @@
                 <%= link_to recipe_path(recipe.id), class:"title_link" do %>
                   <h5 class="card-title text-dark font-weight-bold"><%= recipe.title %></h5>
                 <% end %>
-                <div class="top_card d-flex">
+                <div class="recipe_card_body d-flex">
                   <% if recipe.bookmarked_by?(current_user) %>
                   <p class="mt-2 book_marks">
                     <%#= link_to recipe_book_marks_path(recipe), class:"book_marks", method: :delete do %>
@@ -35,7 +36,7 @@
                   </div>
                   <div>
                     <%= link_to user_path(recipe.user.id) do %>
-                      <%= image_tag recipe.user.get_profile_image(50,50), class:"rounded-circle" %>
+                      <%= image_tag recipe.user.get_profile_image(50,50), class:"rounded-circle ml-2" %>
                       <%= recipe.user.name %>
                     <% end %>
                   </div>
@@ -44,6 +45,8 @@
             </div>
           </div>
         <% end %>
-    <% end %>
+      <% end %>
+    </div>
+    <%#= paginate @recipes %>
   </div>
 </main>
