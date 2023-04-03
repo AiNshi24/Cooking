@@ -25,16 +25,16 @@ Rails.application.routes.draw do
     post 'guests/guest_sign_in' => 'guests#guest_sign_in'
     resources :users, only: [:show, :edit, :update] do
       get :book_marks, on: :member
+      resources :food_stocks, only: [:new, :create, :index, :destroy]
     end
-    get 'users/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
-    patch 'users/withdraw' => 'users#withdraw', as: 'withdraw'
+    get 'users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
+    patch 'users/:id/withdraw' => 'users#withdraw', as: 'withdraw'
     delete 'recipes/destroy_all'
     get 'recipes/search' => 'recipes#search'
     resources :recipes do 
       resources :comments, only: [:create, :destroy, :index]
       resource :book_marks, only: [:create, :destroy]
-  end
-    resources :food_stocks, only: [:new, :create, :index, :destroy]
+    end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
