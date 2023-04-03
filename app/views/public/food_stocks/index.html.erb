@@ -1,2 +1,37 @@
-<h1>Public::FoodStocks#index</h1>
-<p>Find me in app/views/public/food_stocks/index.html.erb</p>
+<main>
+  <div class="container">
+    <div class="flash_message">
+    <%= flash[:notice] %>
+    </div>
+  
+    <% if @recipe.errors.any? %>
+    <div class="error_explanation">
+    <h2><%= @recipe.errors.count %> 件のエラーがあります。</h2>
+    <ul>
+      <% @recipe.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+    </div>
+    <% end %>
+    
+    <div class="row">
+      <div class="col-6">
+        <% form_with model: @food_stock,url: user_food_stocks_path  do |f| %>
+          <div class="cooking-title font-weight-bold mt-3 mb-1">食材名</div>
+          <%= f.text_field :name, placeholder: "(例)トマト" %>
+          <div class="cooking-title font-weight-bold mt-3 mb-1">メモ</div>
+          <%= f.text_area :memo, placeholder: "(例)残り２つ、○月○日まで" %>
+          <%= f.submit "食材を登録する", class:"btn btn-warning" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-6">
+      <% @food_stocks.each do |food_stock| %>
+       <%= food_stock.name %>
+       <%= food_stock.memo %>
+      <% end %>
+    </div>
+    
+  </div>
+</main>

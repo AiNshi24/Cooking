@@ -20,6 +20,7 @@ class Public::FoodStocksController < ApplicationController
   def destroy
     @food_stock = FoodStock.find(params[:id])
     @food_stock.destroy
+    flash[:notice] = "食材を削除しました"
     redirect_to user_food_stocks_path
   end
   
