@@ -32,7 +32,7 @@ class Public::RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     # @comments = @recipe.comments
-    @comment = current_user.comments.new
+    @comment = Comment.new
   end
 
   def edit
@@ -78,11 +78,11 @@ class Public::RecipesController < ApplicationController
     end
 
     # アクセス制限
-    def is_matching_login_user
-      @recipe = Recipe.find(params[:id])
-      unless @recipe.user == current_user
-        redirect_to recipes_path
-      end
-    end
+    # def is_matching_login_user
+    #   @recipe = Recipe.find(params[:id])
+    #   unless @recipe.user == current_user
+    #     redirect_to recipes_path
+    #   end
+    # end
 
 end

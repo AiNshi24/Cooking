@@ -1,2 +1,17 @@
-<h1>Public::Users#unsubscribe</h1>
-<p>Find me in app/views/public/users/unsubscribe.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-10 col-lg-8 px-5 px-sm-0 mx-auto mt-5">
+      <h4 class="unsubscribe font-weight-bold mt-5 mb-4">
+        本当に退会しますか？
+      </h4>
+      <h5 class="confirm">
+        退会すると、全てのデータが削除されます。<br>
+        退会する場合は、「退会する」をクリックしてください。
+      </h5>
+      <div class="unsubscribe_btn mb-5 mt-5">
+        <%= link_to "退会しない", user_path(current_user.id), class:"btn btn-warning mr-3" %>
+        <%= link_to "退会する", withdraw_path, method: :patch, "data-confirm" => "本当に退会しますか？", class:"btn btn-danger" %>
+      </div>
+    </div>
+  </div>
+</div>

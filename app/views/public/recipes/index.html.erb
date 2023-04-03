@@ -32,24 +32,26 @@
               <h5 class="card-title text-dark font-weight-bold"><%= recipe.title %></h5>
             <% end %>
             <div class="recipe_card_body d-flex">
-              <% if recipe.bookmarked_by?(current_user) %>
-              <p class="mt-2 book_marks">
-                <%#= link_to recipe_book_marks_path(recipe), class:"book_marks", method: :delete do %>
-                  ♥ <%= recipe.book_marks.count %>
-                <%# end %>
-              </p>
-              <% else %>
-              <p class="mt-2 book_marks">
-                <%#= link_to recipe_book_marks_path(recipe), class:"book_marks", method: :post do %>
-                  ♡ <%= recipe.book_marks.count %>
-                <%# end %>
+              <% if recipe.user == current_user %>
+                <% if recipe.bookmarked_by?(current_user) %>
+                <p class="mt-2 book_marks">
+                  <%#= link_to recipe_book_marks_path(recipe), class:"book_marks", method: :delete do %>
+                    ♥ <%= recipe.book_marks.count %>
+                  <%# end %>
                 </p>
-              <% end %>
-              <div class="ml-2 mt-2">
-                <%= link_to recipe_path(recipe.id), class:"text-dark comments_count" do %>
-                  <i class="fa-regular fa-comment"></i> <%= recipe.comments.count %>
+                <% else %>
+                <p class="mt-2 book_marks">
+                  <%#= link_to recipe_book_marks_path(recipe), class:"book_marks", method: :post do %>
+                    ♡ <%= recipe.book_marks.count %>
+                  <%# end %>
+                  </p>
                 <% end %>
-              </div>
+                <div class="ml-2 mt-2">
+                  <%= link_to recipe_path(recipe.id), class:"text-dark comments_count" do %>
+                    <i class="fa-regular fa-comment"></i> <%= recipe.comments.count %>
+                  <% end %>
+                </div>
+              <% end %>
               <div>
                 <%= link_to user_path(recipe.user.id) do %>
                   <%= image_tag recipe.user.get_profile_image(50,50), class:"rounded-circle ml-2" %>
