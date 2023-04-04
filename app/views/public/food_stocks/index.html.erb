@@ -32,18 +32,20 @@
     
       <div class="col-8 d-flex flex-wrap">
         <% @food_stocks.each do |food_stock| %>
-          <table class="table food_table">
+          <table class="table food_table mr-2">
             <tr class="food_name">
               <th>
                 <%= food_stock.name %>
-              <%= link_to user_food_stock_path(food_stock.user, food_stock), class:"text-dark ml-3", method: :delete do %>
-                <i class="far fa-trash-alt"></i>
-              <% end %>
+                <!--<div class="text-right">-->
+                <%= link_to user_food_stock_path(food_stock.user, food_stock), class:"text-dark food_delete", method: :delete do %>
+                 <i class="far fa-trash-alt"></i>
+                <% end %>
+                <!--</div>-->
               </th>
             </tr>
-            <tr>
-             <td class="">
-               <%= food_stock.memo %>
+            <tr class="food_memo">
+             <td>
+              <%= food_stock.memo %>
              </td>
            </tr>
          </table>

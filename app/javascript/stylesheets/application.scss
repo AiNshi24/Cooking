@@ -217,7 +217,11 @@ footer{
 // food_stock
 .food_table{
   width: 160px;
+  border: 1px solid #ffcccc;
 }
 .food_name{
   height: 50px;
+}
+.food_memo{
+  height: 100px;
 }
