@@ -6,13 +6,15 @@ ja:
         recipe: レシピ
         ingredient: 材料
         procedure: 作り方
+        # food_stock: ストックリスト
+        
       attributes:
         recipe:
           title: タイトル
         ingredient:
           content: 材料
           quantity: 分量
-  
+      
 ja:  
   activerecord:
     attributes:
