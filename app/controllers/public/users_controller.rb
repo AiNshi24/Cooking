@@ -1,5 +1,5 @@
 class Public::UsersController < ApplicationController
-  before_action :is_matching_login_user, only: [:edit, :update, :withdraw]
+  before_action :is_matching_login_user, only: [:show, :book_marks, :edit, :update, :unsubscribe, :withdraw]
   
   def show
     @user = User.find(params[:id])

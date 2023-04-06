@@ -1,7 +1,7 @@
 class Public::GuestsController < ApplicationController
 
   def guest_sign_in
-    user = User.find_or_create_by!(name: "ゲスト", email: "guest@example.com", is_deleted: false) do |user|
+    user = User.find_or_create_by!(name: "ゲストユーザー", email: "guests@example.com", is_deleted: false) do |user|
       user.password = SecureRandom.urlsafe_base64
       # user.password_confirmation = user.password
     end

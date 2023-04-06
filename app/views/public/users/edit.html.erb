@@ -19,6 +19,9 @@
       <h2 class="ml-0">プロフィール編集</h2>
     </div>
     
+    <% if @user.email == 'guest@example.com'%>
+      　<h3>ゲストユーザーはユーザー情報の編集ができません。</h3>
+      <% else %>
     <div class="row">
       <div class="edit_user mx-auto">
         <%= form_with model: @user,url: user_path do |f| %>
@@ -44,5 +47,6 @@
         <% end %>
       </div>
     </div>
+    <% end %>
   </div>
 </main>
