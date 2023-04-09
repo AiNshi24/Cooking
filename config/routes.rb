@@ -12,8 +12,9 @@ Rails.application.routes.draw do
   
   namespace :admin do
     get '/' => 'homes#top'
-    resources :recipes, only: [:show, :edit, :update, :destroy]
-    resources :comments, only: [:index, :show, :update, :destroy]
+    resources :recipes, only: [:show, :destroy] do
+      resources :comments, only: [:destroy]
+    end
     resources :users, only: [:index, :show, :edit, :update]
     resources :sessions, only: [:new, :create, :destroy]
   end
@@ -25,14 +26,13 @@ Rails.application.routes.draw do
     post 'guests/guest_sign_in' => 'guests#guest_sign_in'
     resources :users, only: [:show, :edit, :update] do
       get :book_marks, on: :member
-      resources :food_stocks, only: [:new, :create, :index, :destroy]
+      resources :food_stocks, only: [:create, :index, :destroy]
     end
     get 'users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
     patch 'users/:id/withdraw' => 'users#withdraw', as: 'withdraw'
-    delete 'recipes/destroy_all'
     get 'recipes/search' => 'recipes#search'
     resources :recipes do 
-      resources :comments, only: [:create, :destroy, :index]
+      resources :comments, only: [:create, :destroy]
       resource :book_marks, only: [:create, :destroy]
     end
   end
