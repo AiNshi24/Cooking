@@ -33,8 +33,8 @@
       <div class="col-8 d-flex flex-wrap">
         <% @food_stocks.each do |food_stock| %>
           <table class="table food_table mr-2">
-            <tr class="food_name">
-              <th>
+            <tr>
+              <th class="food_name">
                 <%= food_stock.name %>
                 <!--<div class="text-right">-->
                 <%= link_to user_food_stock_path(food_stock.user, food_stock), class:"text-dark food_delete", method: :delete do %>
@@ -43,8 +43,8 @@
                 <!--</div>-->
               </th>
             </tr>
-            <tr class="food_memo">
-             <td>
+            <tr>
+             <td class="food_memo">
               <%= food_stock.memo %>
              </td>
            </tr>

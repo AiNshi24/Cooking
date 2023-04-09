@@ -138,6 +138,9 @@ footer{
   max-width: 350px;
   height: 380px;
 }
+.card-img-top{
+  height: 268px;
+}
 .title_link:hover{
   text-decoration: none;
 }
@@ -222,11 +225,30 @@ footer{
 // food_stock
 .food_table{
   width: 160px;
-  border: 1px solid #ffcccc;
+  border: 2px solid #ffcccc;
 }
 .food_name{
   height: 50px;
 }
 .food_memo{
   height: 100px;
+}
+
+// admin
+.center{
+  top: 0;
+bottom: 0;
+margin: auto;
+}
+// .user_table{
+//   border: 2px solid #ffad90;
+// }
+.user_table td{
+  border: 2px solid #ffcccc;
+}
+.user_table > thead{
+  background-color: #fdf5e6;
+}
+.table thead th {
+  border: 2px solid #ffad90;
 }
