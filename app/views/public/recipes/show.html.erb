@@ -6,8 +6,8 @@
     <div class="title d-flex">
       <h2 class="ml-0"><%= @recipe.title %></h2>
       <div class="mt-4 ml-5">
-        <% if current_user.email == 'guests@example.com'%>
-          <% else %>
+        <% if user_signed_in?  && !(current_user.email == 'guests@example.com') %>
+          <%# else %>
             <% if @recipe.bookmarked_by?(current_user) %>
               <div>
                 <%= link_to recipe_book_marks_path(@recipe), class:"book_marks", method: :delete do %>
@@ -74,8 +74,8 @@
       </div>
       <% end %>
     </div>
-    <% if current_user.email == 'guests@example.com'%>
-      <% else %>
+    <% if user_signed_in?  && !(current_user.email == 'guests@example.com') %>
+      <%# else %>
         <div class="send_comment font-weight-bold mt-5 mb-3">コメント</div>
         <div class="row">
           <div class="recipe_comments mb-3 col-6">

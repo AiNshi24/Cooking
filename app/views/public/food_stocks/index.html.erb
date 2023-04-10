@@ -21,7 +21,7 @@
     
     <div class="row">
       <div class="col-4">
-        <%= form_with model: @food_stock,url: user_food_stocks_path  do |f| %>
+        <%= form_with model: @food_stock,url: food_stocks_path  do |f| %>
           <div class="cooking-title font-weight-bold mt-3 mb-1">食材名</div>
           <%= f.text_field :name, placeholder: "(例)トマト" %>
           <div class="cooking-title font-weight-bold mt-3 mb-1">メモ</div>
@@ -37,7 +37,7 @@
               <th class="food_name">
                 <%= food_stock.name %>
                 <!--<div class="text-right">-->
-                <%= link_to user_food_stock_path(food_stock.user, food_stock), class:"text-dark food_delete", method: :delete do %>
+                <%= link_to food_stock_path(food_stock), class:"text-dark food_delete", method: :delete do %>
                  <i class="far fa-trash-alt"></i>
                 <% end %>
                 <!--</div>-->

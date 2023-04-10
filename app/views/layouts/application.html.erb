@@ -15,22 +15,29 @@
     <header class="shadow-sm">
       <nav class="navbar">
         <div class="container">
+          <% if admin_signed_in? %>
+          <div class="header-left">
+            <%= link_to admin_path, class:"navbar-brand p-3" do %>
+            <h1 class="logo">Cooking <%= image_tag 'logo.png', size: "80x80" %></h1>
+            <% end %>
+          </div>
+          <% else %>
           <div class="header-left">
             <%= link_to root_path, class:"navbar-brand p-3" do %>
             <h1 class="logo">Cooking <%= image_tag 'logo.png', size: "80x80" %></h1>
             <% end %>
           </div>
-          <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">-->
-          <!--  <span class="navbar-toggler-icon"></span>-->
-          <!--</button>-->
-          <!--<div class="collapse navbar-collapse" id="navbarNavDropdown">-->
+          <% end %>
+
             <ul class"navbar-nav ml-auto">
             <% if user_signed_in? %>
-            <li class="nav-item">
-              <%= link_to user_path(current_user.id), class:'nav-link text-dark' do %>
-              <i class="fa-solid fa-user"></i> マイページ
-              <% end %>
-            </li>
+              <% if !(current_user.email == 'guests@example.com') %>
+              <li class="nav-item">
+                <%= link_to user_path(current_user.id), class:'nav-link text-dark' do %>
+                <i class="fa-solid fa-user"></i> マイページ
+                <% end %>
+              </li>
+            <% end %>
             <li class="nav-item">
               <%= link_to recipes_path, class:'nav-link text-dark' do %>
               <i class="fas fa-book-open"></i> レシピ一覧
