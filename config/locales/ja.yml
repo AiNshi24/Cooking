@@ -6,7 +6,6 @@ ja:
         recipe: レシピ
         ingredient: 材料
         procedure: 作り方
-        # food_stock: ストックリスト
         
       attributes:
         recipe:

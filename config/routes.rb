@@ -26,8 +26,8 @@ Rails.application.routes.draw do
     post 'guests/guest_sign_in' => 'guests#guest_sign_in'
     resources :users, only: [:show, :edit, :update] do
       get :book_marks, on: :member
-      resources :food_stocks, only: [:create, :index, :destroy]
     end
+    resources :food_stocks, only: [:create, :index, :destroy]
     get 'users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
     patch 'users/:id/withdraw' => 'users#withdraw', as: 'withdraw'
     get 'recipes/search' => 'recipes#search'
