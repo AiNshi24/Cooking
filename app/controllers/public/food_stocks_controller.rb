@@ -1,8 +1,9 @@
 class Public::FoodStocksController < ApplicationController
-# before_action :is_matching_login_user, only: [:create, :index, :destroy]
+ before_action :authenticate_user!, only: [:index, :create, :destroy]
 
   def create
-    @food_stock = current_user.foodStocks.new(food_stock_params)
+    @food_stock = FoodStock.new(food_stock_params)
+    @food_stock.user_id = current_user.id
     if @food_stock.save
       flash[:notice] = "食材を登録しました"
       redirect_to food_stocks_path
@@ -13,9 +14,13 @@ class Public::FoodStocksController < ApplicationController
   end
 
   def index
-    @food_stocks = FoodStock.all
+    @food_stocks = current_user.food_stocks
     @food_stock = FoodStock.new
   end
+  # def new
+  #   @food_stocks = FoodStock.all
+  #   @food_stock = FoodStock.new
+  # end 
 
   def destroy
     @food_stock = FoodStock.find(params[:id]).destroy
@@ -28,13 +33,5 @@ class Public::FoodStocksController < ApplicationController
   def food_stock_params
     params.require(:food_stock).permit(:name, :memo, :user_id)
   end
-
-   # アクセス制限
-    # def is_matching_login_user
-    #   @food_stock = FoodStock.find(params[:id])
-    #   unless @food_stock.user == current_user
-    #     redirect_to root_path
-    #   end
-    # end
 
 end

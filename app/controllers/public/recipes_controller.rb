@@ -1,5 +1,4 @@
 class Public::RecipesController < ApplicationController
-  # before_action :is_matching_login_user, only: [:create, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
   
   def index
@@ -76,13 +75,5 @@ class Public::RecipesController < ApplicationController
         ingredients_attributes: [:id, :content, :quantity, :_destroy],
         procedures_attributes: [:id, :description, :_destroy])
     end
-
-    # アクセス制限
-    # def is_matching_login_user
-    #   @recipe = Recipe.find(params[:id])
-    #   unless @recipe.user == current_user
-    #     redirect_to recipes_path
-    #   end
-    # end
 
 end
