@@ -3,6 +3,8 @@
     <div class="flash_message">
     <%= flash[:notice] %>
     </div>
+    
+    
     <div class="title d-flex">
       <h2 class="ml-0"><%= @recipe.title %></h2>
       <div class="mt-4 ml-5">
@@ -79,7 +81,17 @@
         <div class="send_comment font-weight-bold mt-5 mb-3">コメント</div>
         <div class="row">
           <div class="recipe_comments mb-3 col-6">
-            <%= form_with model: [@recipe, @comment] do |f| %>
+            <%= form_with model: [@recipe, @comment], local: true do |f| %>
+              <% if @comment.present? %>
+                <div class="error_explanation">
+                  <!--<h2><%#= @comment.errors.count %> 件のエラーがあります。</h2>-->
+                  <ul>
+                    <% @comment.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                    <% end %>
+                  </ul>
+                </div>
+              <% end %>
               <div class="mb-3">
               <%= f.file_field :image, placeholder: "ファイルを選択", accept: "image/*", class:"" %>
               </div>
@@ -90,8 +102,10 @@
           <div class="mb-5 col-6">
             <p>コメント件数：<%= @recipe.comments.count %></p>
             <% @recipe.comments.each do |comment| %>
-              <%= image_tag comment.user.get_profile_image(50,50), class:"rounded mb-2" %>
-              <%= comment.user.name %>
+              <%= link_to user_path(comment.user_id) do %>
+                <%= image_tag comment.user.get_profile_image(50,50), class:"rounded mb-2" %>
+                <%= comment.user.name %>
+              <% end %>
               <% if comment.user == current_user %>
                 <%= link_to "削除", recipe_comment_path(comment.recipe, comment), method: :delete, class:"btn btn-outline-danger btn-sm ml-5" %>
               <% end %>

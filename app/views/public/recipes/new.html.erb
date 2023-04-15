@@ -9,7 +9,7 @@
     <h2><%= @recipe.errors.count %> 件のエラーがあります。</h2>
     <ul>
       <% @recipe.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
+      <li class="mr-3"><%= message %></li>
       <% end %>
     </ul>
     </div>

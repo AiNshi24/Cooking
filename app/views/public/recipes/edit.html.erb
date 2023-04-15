@@ -23,7 +23,7 @@
         <div class="recipe_delete">
           <%= link_to "削除する", recipe_path, method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger mb-2" %>
         </div>
-        <%= form_with model: @recipe, url: edit_recipe_path do |f| %>
+        <%= form_with model: @recipe, url: recipe_path(@recipe.id) do |f| %>
         <div class="img_field">
           <div class="cooking-title font-weight-bold mt-3 mb-1">出来上がり写真</div>
             <div class="img_select">

@@ -1,14 +1,14 @@
 class Public::CommentsController < ApplicationController
 
   def create
-    recipe = Recipe.find(params[:recipe_id])
-    comment = current_user.comments.new(comment_params)
-    comment.recipe_id = recipe.id
-    if comment.save
+    @recipe = Recipe.find(params[:recipe_id])
+    @comment = current_user.comments.new(comment_params)
+    @comment.recipe_id = @recipe.id
+    if @comment.save
       flash[:notice] = "コメントを投稿しました。"
       redirect_to recipe_path(params[:recipe_id])
     else
-      redirect_to recipe_path(params[:recipe_id])
+      render 'public/recipes/show'
     end
   end
   
