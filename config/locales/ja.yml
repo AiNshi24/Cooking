@@ -1,23 +1,17 @@
-ja:
-  activerecord:
-    errors:
-      models: 
-        user: ユーザー
-        recipe: レシピ
-        ingredient: 材料
-        procedure: 作り方
-        
-      attributes:
-        recipe:
-          title: タイトル
-        ingredient:
-          content: 材料
-          quantity: 分量
-      
 ja:  
   activerecord:
     attributes:
+      recipe:
+        title: タイトル
+      recipe/ingredients:
+        content: 材料
+        quantity: 分量
+      recipe/procedures:
+        description: 作り方
+      comment:
+        comment: コメント
       user:
+        name: お名前
         introduction: 自己紹介文
         confirmation_sent_at: パスワード確認送信時刻
         confirmation_token: パスワード確認用トークン
