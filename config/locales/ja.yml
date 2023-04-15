@@ -10,6 +10,9 @@ ja:
         description: 作り方
       comment:
         comment: コメント
+      food_stock:
+        name: 食材名
+        memo: メモ
       user:
         name: お名前
         introduction: 自己紹介文
