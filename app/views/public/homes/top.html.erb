@@ -29,7 +29,7 @@
                 <h5 class="card-title text-dark font-weight-bold"><%= recipe.title %></h5>
               <% end %>
               <div class="top_card d-flex">
-                <% if user_signed_in? && !current_user.email == 'guests@example.com' %>
+                <% if user_signed_in? %>
                   <% if recipe.bookmarked_by?(current_user) %>
                     <p class="mt-2 book_marks">
                       ♥ <%= recipe.book_marks.count %>
@@ -46,7 +46,12 @@
                   </div>
                 <% end %>
                 <div>
-                  <%= link_to user_path(recipe.user.id) do %>
+                  <% if user_signed_in? %>
+                    <%= link_to user_path(recipe.user.id) do %>
+                      <%= image_tag recipe.user.get_profile_image(50,50), class:"rounded-circle ml-2" %>
+                      <%= recipe.user.name %>
+                    <% end %>
+                  <% else %>
                     <%= image_tag recipe.user.get_profile_image(50,50), class:"rounded-circle ml-2" %>
                     <%= recipe.user.name %>
                   <% end %>

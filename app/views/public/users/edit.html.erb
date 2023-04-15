@@ -3,28 +3,26 @@
     <div class="flash_message">
     <%= flash[:notice] %>
     </div>
-
-    <% if @user.errors.any? %>
-    <div class="error_explanation">
-    <h2><%= @user.errors.count %> 件のエラーがあります。</h2>
-    <ul>
-      <% @user.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-      <% end %>
-    </ul>
-    </div>
-    <% end %>
-    
     <div class="title d-flex">
       <h2 class="ml-0">プロフィール編集</h2>
     </div>
-    
-    <% if @user.email == 'guests@example.com'%>
+  
+    <% if @user.name == 'ゲストユーザー'%>
       　<h3>ゲストユーザーはユーザー情報の編集ができません。</h3>
       <% else %>
         <div class="row">
           <div class="edit_user mx-auto">
             <%= form_with model: @user,url: user_path do |f| %>
+              <% if @user.errors.any? %>
+                <div class="error_explanation">
+                <h2><%= @user.errors.count %> 件のエラーがあります。</h2>
+                <ul>
+                  <% @user.errors.full_messages.each do |message| %>
+                  <li class="mr-3"><%= message %></li>
+                  <% end %>
+                </ul>
+                </div>
+              <% end %>
             <div class="cooking-title font-weight-bold mt-3 mb-1">お名前</div>
               <%= f.text_field :name, placeholder: "はなこ" %>
             <div class="cooking-title font-weight-bold mt-3 mb-1">メールアドレス</div>

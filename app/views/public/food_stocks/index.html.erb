@@ -4,7 +4,10 @@
     <%= flash[:notice] %>
     </div>
 
-    <% if @food_stock.errors.any? %>
+    <div class="title d-flex">
+      <h2 class="ml-0">ストックリスト</h2>
+    </div>
+<% if @food_stock.errors.any? %>
     <div class="error_explanation">
     <h2><%= @food_stock.errors.count %> 件のエラーがあります。</h2>
     <ul>
@@ -14,11 +17,6 @@
     </ul>
     </div>
     <% end %>
-
-    <div class="title d-flex">
-      <h2 class="ml-0">ストックリスト</h2>
-    </div>
-
     <div class="row">
       <div class="col-4">
         <%= form_with model: @food_stock,url: food_stocks_path  do |f| %>

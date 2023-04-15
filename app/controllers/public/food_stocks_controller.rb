@@ -17,10 +17,6 @@ class Public::FoodStocksController < ApplicationController
     @food_stocks = current_user.food_stocks
     @food_stock = FoodStock.new
   end
-  # def new
-  #   @food_stocks = FoodStock.all
-  #   @food_stock = FoodStock.new
-  # end 
 
   def destroy
     @food_stock = FoodStock.find(params[:id]).destroy

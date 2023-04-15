@@ -31,13 +31,13 @@
 
             <ul class"navbar-nav ml-auto">
             <% if user_signed_in? %>
-              <% if !(current_user.email == 'guests@example.com') %>
+              <%# if !(current_user.email == 'guests@example.com') %>
               <li class="nav-item">
                 <%= link_to user_path(current_user.id), class:'nav-link text-dark' do %>
                 <i class="fa-solid fa-user"></i> マイページ
                 <% end %>
               </li>
-            <% end %>
+            <%# end %>
             <li class="nav-item">
               <%= link_to recipes_path, class:'nav-link text-dark' do %>
               <i class="fas fa-book-open"></i> レシピ一覧

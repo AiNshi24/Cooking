@@ -3,23 +3,22 @@
     <div class="flash_message">
     <%= flash[:notice] %>
     </div>
-
-    <% if @recipe.errors.any? %>
-    <div class="error_explanation">
-    <h2><%= @recipe.errors.count %> 件のエラーがあります。</h2>
-    <ul>
-      <% @recipe.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-      <% end %>
-    </ul>
-    </div>
-    <% end %>
     
     <div class="title d-flex">
       <h2 class="ml-0">レシピ編集</h2>
     </div>
     <div class="row">
       <div class="edit_recipe mx-auto">
+        <% if @recipe.errors.any? %>
+          <div class="error_explanation">
+          <h2><%= @recipe.errors.count %> 件のエラーがあります。</h2>
+          <ul>
+            <% @recipe.errors.full_messages.each do |message| %>
+            <li class="mr-3"><%= message %></li>
+            <% end %>
+          </ul>
+          </div>
+        <% end %>
         <div class="recipe_delete">
           <%= link_to "削除する", recipe_path, method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger mb-2" %>
         </div>
