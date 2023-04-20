@@ -8,7 +8,11 @@
       <h1 class="mypage_name mt-5 ml-4"><%= @user.name %></h1>
     </div>
     <div class="mb-3">
-      <%= @user.introduction %>
+      <% if @user.is_deleted == true %>
+        <h4>退会済みのユーザーです。</h4>
+      <% else %>
+        <%= @user.introduction %>
+      <% end %>
     </div>
     <div>
       <% if @user == current_user %>

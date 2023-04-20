@@ -8,7 +8,7 @@ class Public::FoodStocksController < ApplicationController
       flash[:notice] = "食材を登録しました"
       redirect_to food_stocks_path
     else
-      @food_stocks = FoodStock.all
+      @food_stocks = current_user.food_stocks
       render :index
     end
   end
