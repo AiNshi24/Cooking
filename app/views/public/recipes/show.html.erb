@@ -12,13 +12,13 @@
           <%# else %>
             <% if @recipe.bookmarked_by?(current_user) %>
               <div>
-                <%= link_to recipe_book_marks_path(@recipe), class:"book_marks", method: :delete do %>
+                <%= link_to recipe_book_marks_path(@recipe), class: "book_marks", method: :delete do %>
                   <h4>♥ <%= @recipe.book_marks.count %></h4>
                 <% end %>
               </div>
               <% else %>
               <div>
-                <%= link_to recipe_book_marks_path(@recipe), class:"book_marks", method: :post do %>
+                <%= link_to recipe_book_marks_path(@recipe), class: "book_marks", method: :post do %>
                   <h4>♡ <%= @recipe.book_marks.count %></h4>
                 <% end %>
               </div>
@@ -28,17 +28,17 @@
       <div class="recipe_user mt-2">
         <% if user_signed_in? %>
           <%= link_to user_path(@recipe.user_id) do %>
-            <%= image_tag @recipe.user.get_profile_image(70,70), class:"rounded mt-2" %>
+            <%= image_tag @recipe.user.get_profile_image(70,70), class: "rounded mt-2" %>
             <%= @recipe.user.name %>
           <% end %>
         <% else %>
-          <%= image_tag @recipe.user.get_profile_image(70,70), class:"rounded mt-2" %>
+          <%= image_tag @recipe.user.get_profile_image(70,70), class: "rounded mt-2" %>
           <%= @recipe.user.name %>
         <% end %>
       </div>
       <div>
         <% if @recipe.user == current_user %>
-          <%= link_to "レシピ編集", edit_recipe_path(@recipe.id), class:"recipe_edit_btn btn btn-sm btn-outline-warning ml-5 mt-3" %>
+          <%= link_to "レシピ編集", edit_recipe_path(@recipe.id), class: "recipe_edit_btn btn btn-sm btn-outline-warning ml-5 mt-3" %>
         <% end %>
       </div>
     </div>
@@ -98,21 +98,21 @@
                 </div>
               <% end %>
               <div class="mb-3">
-              <%= f.file_field :image, placeholder: "ファイルを選択", accept: "image/*", class:"" %>
+              <%= f.file_field :image, placeholder: "ファイルを選択", accept: "image/*", class: "" %>
               </div>
-              <%= f.text_area :comment, rows: '5', placeholder: "コメントを書く（100文字)", class:"comment_field" %>
-              <%= f.submit "送信する", class:"btn btn-info btn-sm mb-3 ml-2" %>
+              <%= f.text_area :comment, rows: '5', placeholder: "コメントを書く（100文字)", class: "comment_field" %>
+              <%= f.submit "送信する", class: "btn btn-info btn-sm mb-3 ml-2" %>
             <% end %>
           </div>
           <div class="mb-5 col-6">
             <p>コメント件数：<%= @recipe.comments.count %></p>
             <% @recipe.comments.each do |comment| %>
               <%= link_to user_path(comment.user_id) do %>
-                <%= image_tag comment.user.get_profile_image(50,50), class:"rounded mb-2" %>
+                <%= image_tag comment.user.get_profile_image(50,50), class: "rounded mb-2" %>
                 <%= comment.user.name %>
               <% end %>
               <% if comment.user == current_user %>
-                <%= link_to "削除", recipe_comment_path(comment.recipe, comment), method: :delete, class:"btn btn-outline-danger btn-sm ml-5" %>
+                <%= link_to "削除", recipe_comment_path(comment.recipe, comment), method: :delete, class: "btn btn-outline-danger btn-sm ml-5" %>
               <% end %>
               <div class="d-flex mb-3">
               <div class="comment_img mr-2"><%= image_tag comment.get_image %></div>

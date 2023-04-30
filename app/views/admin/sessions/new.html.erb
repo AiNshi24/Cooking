@@ -11,16 +11,16 @@
         <%= form_with model: @admin, url: admin_session_path do |f| %>
           <div class="field login">
             <%= f.label :email, "メールアドレス" %>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"login_field" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "login_field" %>
           </div>
         
           <div class="field login mt-2">
             <%= f.label :password, "パスワード" %>
-            <%= f.password_field :password, autocomplete: "current-password", class:"login_field" %>
+            <%= f.password_field :password, autocomplete: "current-password", class: "login_field" %>
           </div>
         
           <div class="actions">
-            <%= f.submit "ログイン", class:"btn btn-warning d-block login_btn mt-5" %>
+            <%= f.submit "ログイン", class: "btn btn-warning d-block login_btn mt-5" %>
           </div>
         <% end %>
       </div>

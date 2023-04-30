@@ -13,12 +13,12 @@
           
           <div class="field sign_up">
             <%= f.label :validationName, "お名前" %>
-            <%= f.text_field :name, autofocus: true, placeholder: "はなこ", class:"sign_up_name" %>
+            <%= f.text_field :name, autofocus: true, placeholder: "はなこ", class: "sign_up_name" %>
           </div>
             
           <div class="field sign_up mt-2">
             <%= f.label :email, "メールアドレス" %>
-            <%= f.email_field :email, placeholder: "sample@example.com", autocomplete: "email", class:"sign_up_email" %>
+            <%= f.email_field :email, placeholder: "sample@example.com", autocomplete: "email", class: "sign_up_email" %>
           </div>
         
           <div class="field sign_up mt-2">
@@ -32,7 +32,7 @@
           </div>
         
           <div class="actions">
-            <%= f.submit "新規登録", class:"btn btn-warning d-block sign_up_btn mt-5" %>
+            <%= f.submit "新規登録", class: "btn btn-warning d-block sign_up_btn mt-5" %>
           </div>
         <% end %>
       

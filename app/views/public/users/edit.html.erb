@@ -26,20 +26,20 @@
             <div class="cooking-title font-weight-bold mt-3 mb-1">お名前</div>
               <%= f.text_field :name, placeholder: "はなこ" %>
             <div class="cooking-title font-weight-bold mt-3 mb-1">メールアドレス</div>
-            <%= f.email_field :email, placeholder: "sample@example.com", autocomplete: "email", class:"sign_up_email" %>
+            <%= f.email_field :email, placeholder: "sample@example.com", autocomplete: "email", class: "sign_up_email" %>
             <div class="img_field">
               <div class="cooking-title font-weight-bold mt-3 mb-1">写真</div>
               <div class="img_select">
-                <%= f.file_field :profile_image, placeholder: "ファイルを選択", accept: "image/*", class:"image mb-2" %>
+                <%= f.file_field :profile_image, placeholder: "ファイルを選択", accept: "image/*", class: "image mb-2" %>
               </div>
               <div id="edit-image"></div>
             </div> 
             <div class="cooking-title font-weight-bold mt-3 mb-1">自己紹介</div>
-             <%= f.text_area :introduction, placeholder:"(100文字以内)", class:"user_introduction mb-2 mr-2" %>
+             <%= f.text_area :introduction, placeholder:"(100文字以内)", class: "user_introduction mb-2 mr-2" %>
             <div class="actions mt-4">
-              <%= f.submit "編集内容を保存", class:"btn btn-warning user_edit_btn" %>
+              <%= f.submit "編集内容を保存", class: "btn btn-warning user_edit_btn" %>
               <div>
-                <%= link_to "退会する", unsubscribe_path, class:"btn btn-danger red_btn mt-5 mb-5" %>
+                <%= link_to "退会する", unsubscribe_path, class: "btn btn-danger red_btn mt-5 mb-5" %>
               </div>
             </div>
           <% end %>

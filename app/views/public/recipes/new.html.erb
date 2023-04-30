@@ -21,7 +21,7 @@
         <div class="img_field">
           <div class="cooking-title font-weight-bold mt-5 mb-1">出来上がり写真</div>
             <div class="img_select">
-              <%= f.file_field :image, placeholder: "ファイルを選択", accept: "image/*", class:"image mb-2" %>
+              <%= f.file_field :image, placeholder: "ファイルを選択", accept: "image/*", class: "image mb-2" %>
             </div>
             <div id="new-image"></div>
           </div>
@@ -36,7 +36,7 @@
               <% end %>
               <div id="detail-association-insertion-ingredients"></div>
               <%= link_to_add_association "材料を追加", f, :ingredients,
-              class:"add_btn btn btn-sm",
+              class: "add_btn btn btn-sm",
               data: {
                 association_insertion_node: '#detail-association-insertion-ingredients',
                 association_insertion_method: 'before'
@@ -53,7 +53,7 @@
               <% end %>
               <div id="detail-association-insertion-procedures"></div>
               <%= link_to_add_association "手順を追加", f, :procedures,
-              class:"add_btn btn btn-sm",
+              class: "add_btn btn btn-sm",
               data: {
                 association_insertion_node: '#detail-association-insertion-procedures',
                 association_insertion_method: 'before'
@@ -65,15 +65,15 @@
           <div class="tag_select">
             <div class="cooking-title font-weight-bold mt-3 mb-1">関連タグ</div>
             <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
-              <%= tag.label class:"tag_item" do %>
-                <%= tag.check_box class:"tag_checkbox" %>
+              <%= tag.label class: "tag_item" do %>
+                <%= tag.check_box class: "tag_checkbox" %>
                 <%= tag.text %>
               <% end %>
             <% end %>
           </div>
 
           <div class="recipe_action">
-            <%= f.submit "レシピを投稿する", class:"btn btn-warning d-block mt-3 mb-4" %>
+            <%= f.submit "レシピを投稿する", class: "btn btn-warning d-block mt-3 mb-4" %>
           </div>
         <% end %>
       </div>
